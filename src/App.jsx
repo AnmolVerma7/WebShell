@@ -103,6 +103,21 @@ export default function App() {
           </div>
         </div>
       </div>
+      {tweaks.borderless && (
+        <div className="app-brand-badge" aria-hidden="true" title={APP_NAME}>
+          <img
+            src={logoUrl()}
+            alt=""
+            width={22}
+            height={22}
+            decoding="async"
+            onError={(e) => {
+              const el = e.currentTarget.closest('.app-brand-badge');
+              if (el) el.style.display = 'none';
+            }}
+          />
+        </div>
+      )}
       <button
         className="tweaks-toggle"
         onClick={() => setTweaksVisible(v => !v)}
