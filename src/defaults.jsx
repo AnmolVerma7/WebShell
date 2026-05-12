@@ -10,7 +10,7 @@
 // preferences. Do it only on incompatible schema changes.
 
 const TWEAK_DEFAULTS = {
-  theme: 'cyberpunk',
+  theme: 'AV Cyberpunk',
   font: 'Courier Prime',
   fontSize: 20,
   scanlines: true,
@@ -18,10 +18,10 @@ const TWEAK_DEFAULTS = {
   muted: false,
   volume: 0.5,
   pressVolume: 1,
-  promptLabel: 'CARDINI@PC',
+  promptLabel: 'Anmol@PC',
   borderless: true,
   vfsHere: true,
-  welcome: ">>> ANMOL'S TERMINAL — v1.0 <<<",
+  welcome: ">>> ANMOL'S TERMINAL — v2.0 <<<",
   showWelcome: true,
   bootAnimation: true,
 };
