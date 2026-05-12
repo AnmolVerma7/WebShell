@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "An interactive virtual terminal in the browser — virtual filesystem, pipes, aliases, SSH simulation, mechanical key sounds, theme tweaks.",
+  "homepage": "https://anmolv.com/WebShell/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

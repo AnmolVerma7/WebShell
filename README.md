@@ -1,5 +1,7 @@
 # Command Prompt Shell
 
+**Live demo:** [https://anmolv.com/WebShell/](https://anmolv.com/WebShell/)
+
 A fully interactive virtual terminal built in React + Vite. Runs entirely in the browser — no server, no install. Features a virtual filesystem, command history, tab autocomplete, SSH simulation with animated cinematic, a live `top` process monitor, a modal `nano` text editor, mechanical key sounds, filesystem mutation, pipes, aliases, a boot-sequence animation, and a rich Tweaks panel.
 
 ---
@@ -20,9 +22,11 @@ npm run preview    # serve the production build locally
 
 ### GitHub Pages (live site)
 
+**Public URL:** [https://anmolv.com/WebShell/](https://anmolv.com/WebShell/) (custom domain). GitHub’s default Pages URL (`https://anmolverma7.github.io/WebShell/`) may also work depending on your Pages / DNS setup.
+
 This repo includes [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml): every push to `main` builds with `npm ci` / `npm run build` and deploys `dist/` to **GitHub Pages**.
 
-**One-time setup:** in the repo on GitHub go to **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”). After the first successful workflow run, the site URL is shown on the workflow run and under **Settings → Pages** (typically `https://<user>.github.io/WebShell/`).
+**One-time setup:** in the repo on GitHub go to **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”). After the first successful workflow run, confirm the site under **Settings → Pages** and point your custom domain at GitHub Pages if you use one.
 
 The terminal starts in `/home/user`. Type `help` to see all available commands, or `man <command>` for detailed help on any specific command. All Tweaks settings (theme, font, prompt, sounds, etc.) are persisted in `localStorage` under `shell.tweaks.v1`.
 
