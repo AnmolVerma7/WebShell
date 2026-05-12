@@ -3,7 +3,8 @@ import { Terminal } from './terminal.jsx';
 import { TweaksPanel } from './tweaks.jsx';
 import { THEMES, FONTS } from './themes.jsx';
 import { TWEAK_DEFAULTS, loadStoredTweaks, saveTweaks, clearStoredTweaks } from './defaults.jsx';
-import { setKeySoundVolume, setKeySoundMuted, setPressSoundVolume } from './sounds.jsx';
+import { setKeySoundVolume, setKeySoundMuted, setPressSoundVolume, setSoundPack } from './sounds.jsx';
+import { APP_NAME, logoUrl } from './appMeta.js';
 
 export default function App() {
   const [tweaks, setTweaksState] = useState(loadStoredTweaks);
@@ -43,6 +44,10 @@ export default function App() {
     setPressSoundVolume(tweaks.pressVolume ?? 0.605);
   }, [tweaks.pressVolume]);
 
+  useEffect(() => {
+    setSoundPack(tweaks.keySoundPack);
+  }, [tweaks.keySoundPack]);
+
   const fxClass = [
     tweaks.scanlines ? 'fx-scanlines' : '',
     tweaks.glow ? 'fx-glow' : '',
@@ -75,10 +80,21 @@ export default function App() {
                 <div className="win-dot" style={{ background: 'oklch(0.70 0.15 150)' }} />
               </div>
               <div className="win-tabs">
-                <span className="win-tab active" style={{ color: theme.fg }}>shell</span>
+                <span className="win-tab active win-tab-with-logo" style={{ color: theme.fg }}>
+                  <img
+                    className="win-tab-logo"
+                    src={logoUrl()}
+                    alt=""
+                    width={14}
+                    height={14}
+                    decoding="async"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                  {APP_NAME}
+                </span>
                 <span className="win-tab">+</span>
               </div>
-              <div className="win-title">user@workstation — shell</div>
+              <div className="win-title">user@workstation — {APP_NAME}</div>
               <div style={{ width: 54 }} />
             </div>
           )}

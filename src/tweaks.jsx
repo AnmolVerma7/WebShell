@@ -126,6 +126,30 @@ function TweaksPanel({ tweaks, setTweaks, resetTweaks, visible }) {
 
       <div className="tweaks-group">
         <div className="tweaks-label">Key sounds</div>
+        <div className="tweaks-label" style={{ marginTop: 0, marginBottom: 4 }}>Sound pack</div>
+        <div className="tweaks-row" style={{ flexWrap: 'wrap', gap: 6 }}>
+          <button
+            type="button"
+            className={`tweaks-chip ${(tweaks.keySoundPack || 'cream') === 'cream' ? 'active' : ''}`}
+            onClick={() => setTweaks({ keySoundPack: 'cream' })}
+          >
+            Cream (original)
+          </button>
+          <button
+            type="button"
+            className={`tweaks-chip ${tweaks.keySoundPack === 'mxblack' ? 'active' : ''}`}
+            onClick={() => setTweaks({ keySoundPack: 'mxblack' })}
+          >
+            MX Black
+          </button>
+          <button
+            type="button"
+            className={`tweaks-chip ${tweaks.keySoundPack === 'mxbrown' ? 'active' : ''}`}
+            onClick={() => setTweaks({ keySoundPack: 'mxbrown' })}
+          >
+            MX Brown
+          </button>
+        </div>
         <label className="tweaks-check">
           <input type="checkbox" checked={!tweaks.muted}
             onChange={e => setTweaks({ muted: !e.target.checked })} />

@@ -40,6 +40,15 @@ html, body {
 .win-tabs { display: flex; align-items: center; gap: 4px; }
 .win-tab { font-size: 11px; padding: 3px 10px; border-radius: 4px; opacity: 0.55; }
 .win-tab.active { opacity: 1; background: rgba(255,255,255,0.06); }
+.win-tab-with-logo { display: inline-flex; align-items: center; gap: 6px; }
+.win-tab-logo {
+  display: block;
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
 
 .term-root {
   flex: 1; min-height: 0;

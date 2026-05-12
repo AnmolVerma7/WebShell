@@ -18,6 +18,8 @@ const TWEAK_DEFAULTS = {
   muted: false,
   volume: 0.5,
   pressVolume: 1,
+  /** @type {'cream' | 'mxblack' | 'mxbrown'} */
+  keySoundPack: 'cream',
   promptLabel: 'Anmol@PC',
   borderless: true,
   vfsHere: true,

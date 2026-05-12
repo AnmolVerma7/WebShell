@@ -2,12 +2,43 @@
 // - press sounds: routed through Web Audio API GainNode so gain can exceed 1.0
 // - space/backspace/enter: standard HTMLAudio pool
 
-const SOUND_SRCS = {
-  press:     'assets/key-press.mp3',
-  backspace: 'assets/key-backspace.mp3',
-  enter:     'assets/key-enter.mp3',
-  space:     'assets/key-space.mp3',
+const SOUND_PACKS = {
+  cream: {
+    press:     'assets/key-press.mp3',
+    backspace: 'assets/key-backspace.mp3',
+    enter:     'assets/key-enter.mp3',
+    space:     'assets/key-space.mp3',
+  },
+  mxblack: {
+    press:     'assets/mxblack-press.mp3',
+    backspace: 'assets/mxblack-backspace.mp3',
+    enter:     'assets/mxblack-enter.mp3',
+    space:     'assets/mxblack-space.mp3',
+  },
+  mxbrown: {
+    press:     'assets/mxbrown-press.mp3',
+    backspace: 'assets/mxbrown-backspace.mp3',
+    enter:     'assets/mxbrown-enter.mp3',
+    space:     'assets/mxbrown-space.mp3',
+  },
 };
+
+/** @type {keyof typeof SOUND_PACKS} */
+let soundPack = 'cream';
+
+function soundSrcs() {
+  return SOUND_PACKS[soundPack] || SOUND_PACKS.cream;
+}
+
+/** @param {keyof typeof SOUND_PACKS | string} pack */
+function setSoundPack(pack) {
+  const next = SOUND_PACKS[pack] ? pack : 'cream';
+  if (next === soundPack && pressBuffer !== null && htmlReady) return;
+  soundPack = next;
+  pressBuffer = null;
+  htmlReady = false;
+  for (const k of Object.keys(htmlPools)) delete htmlPools[k];
+}
 
 const POOL_SIZE = 6;
 
@@ -30,7 +61,7 @@ function getAudioCtx() {
 async function loadPressBuffer() {
   if (pressBuffer) return pressBuffer;
   const ctx = getAudioCtx();
-  const resp = await fetch(SOUND_SRCS.press);
+  const resp = await fetch(soundSrcs().press);
   const arr = await resp.arrayBuffer();
   pressBuffer = await ctx.decodeAudioData(arr);
   return pressBuffer;
@@ -60,7 +91,7 @@ function initHtmlSounds() {
   for (const name of ['backspace', 'enter', 'space']) {
     htmlPools[name] = [];
     for (let i = 0; i < POOL_SIZE; i++) {
-      const a = new Audio(SOUND_SRCS[name]);
+      const a = new Audio(soundSrcs()[name]);
       a.preload = 'auto';
       a.volume = htmlVolume;
       htmlPools[name].push(a);
@@ -126,5 +157,6 @@ document.addEventListener('click', warmUpSounds, { once: true });
 export {
   playKeySound, soundForKey,
   setKeySoundVolume, setPressSoundVolume, setKeySoundMuted,
+  setSoundPack,
   warmUpSounds,
 };

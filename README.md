@@ -359,6 +359,7 @@ Open via the gear button in the top-right corner. All settings are persisted acr
 | Welcome message → show on start | Toggle the welcome banner |
 | Welcome message → text | Custom banner text shown above the first prompt |
 | Key sounds → Enabled | Toggle all key sounds on/off |
+| Key sounds → Sound pack | **Cream (original)** — default `key-*.mp3` assets. **MX Black** / **MX Brown** — alternate clips (`mxblack-*.mp3` or `mxbrown-*.mp3` under `public/assets/`) |
 | Key sounds → Volume | Controls space / backspace / enter sound volume |
 | Keypress volume | Independent volume for regular key presses (1.5× amplified via Web Audio) |
 | Prompt | Customize your prompt label. Supports `user`, `user@host`, or any freeform string |
@@ -368,16 +369,16 @@ Open via the gear button in the top-right corner. All settings are persisted acr
 
 ## Key Sounds
 
-Four distinct mechanical sounds mapped to key types:
+Four distinct mechanical sounds mapped to key types. Pick **Cream (original)**, **MX Black**, or **MX Brown** under **Tweaks → Key sounds → Sound pack**; the mapping is the same, only the audio files change.
 
-| Key | Sound |
-|-----|-------|
-| Regular keys (letters, numbers, symbols) | `cream-press` — boosted 1.5× via Web Audio GainNode |
-| Space | `cream-space-press` |
-| Backspace / Delete | `cream-backspace-press` |
-| Enter | `cream-enter-press` |
+| Key | Cream (original) | MX Black | MX Brown |
+|-----|------------------|----------|----------|
+| Regular keys (letters, numbers, symbols, arrows, Tab) | `key-press.mp3` — boosted 1.5× via Web Audio GainNode | `mxblack-press.mp3` | `mxbrown-press.mp3` |
+| Space | `key-space.mp3` | `mxblack-space.mp3` | `mxbrown-space.mp3` |
+| Backspace / Delete | `key-backspace.mp3` | `mxblack-backspace.mp3` | `mxbrown-backspace.mp3` |
+| Enter | `key-enter.mp3` | `mxblack-enter.mp3` | `mxbrown-enter.mp3` |
 
-Space, backspace, and enter volumes are controlled together by the main volume slider. Keypress volume is independently adjustable. All sounds can be muted globally.
+All paths are under `public/assets/`. Space, backspace, and enter volumes are controlled together by the main volume slider. Keypress volume is independently adjustable. All sounds can be muted globally.
 
 ---
 
