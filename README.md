@@ -18,6 +18,12 @@ npm run build      # outputs to dist/
 npm run preview    # serve the production build locally
 ```
 
+### GitHub Pages (live site)
+
+This repo includes [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml): every push to `main` builds with `npm ci` / `npm run build` and deploys `dist/` to **GitHub Pages**.
+
+**One-time setup:** in the repo on GitHub go to **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”). After the first successful workflow run, the site URL is shown on the workflow run and under **Settings → Pages** (typically `https://<user>.github.io/WebShell/`).
+
 The terminal starts in `/home/user`. Type `help` to see all available commands, or `man <command>` for detailed help on any specific command. All Tweaks settings (theme, font, prompt, sounds, etc.) are persisted in `localStorage` under `shell.tweaks.v1`.
 
 ---
